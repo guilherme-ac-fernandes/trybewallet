@@ -3,6 +3,7 @@ import {
   REQUEST_CURRENCY_SUCESS,
   REQUEST_CURRENCY_FAILED,
   SAVE_EXPENSE,
+  SAVE_ERROR,
 } from '../actions/index';
 
 const INICIAL_STATE = {
@@ -10,6 +11,7 @@ const INICIAL_STATE = {
   expenses: [],
   errorAPI: '',
   loadingAPI: false,
+  errorAPICurrent: '',
 };
 
 const wallet = (state = INICIAL_STATE, action) => {
@@ -33,6 +35,8 @@ const wallet = (state = INICIAL_STATE, action) => {
       ...state,
       expenses: [...state.expenses, action.payload],
     };
+  case SAVE_ERROR:
+    return { ...state, errorAPICurrent: action.error };
   default: return state;
   }
 };

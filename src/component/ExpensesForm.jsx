@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { saveExpenseAction, fetchUpdatedCurrency } from '../actions';
+import { fetchUpdatedCurrency } from '../actions';
 
 const INICIAL_STATE = {
   value: '',
@@ -26,14 +26,13 @@ class ExpensesForm extends React.Component {
 
   handleClick = async () => {
     const { saveExpense, expenses } = this.props;
-    const exchangeRates = await fetchUpdatedCurrency();
     // Utilização da lógica de id único proveniente da mentoria com Especialista Gabriel Espindola
     let id = 0;
     if (expenses.length > 0) {
       const lastElement = expenses[expenses.length - 1];
       id = lastElement.id + 1;
     }
-    saveExpense({ ...this.state, exchangeRates, id });
+    saveExpense({ ...this.state, id });
     this.setState({ ...INICIAL_STATE });
   }
 
@@ -135,7 +134,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  saveExpense: (payload) => dispatch(saveExpenseAction(payload)),
+  saveExpense: (payload) => dispatch(fetchUpdatedCurrency(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesForm);
