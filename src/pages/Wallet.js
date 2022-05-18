@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchCurrency from '../actions';
+import ExpensesForm from '../component/ExpensesForm';
 
 class Wallet extends React.Component {
   componentDidMount() {
-    console.log('to aqui');
     const { apiRequestCurrency } = this.props;
     apiRequestCurrency();
   }
@@ -20,6 +20,7 @@ class Wallet extends React.Component {
           <p data-testid="total-field">0</p>
           <span data-testid="header-currency-field">BRL</span>
         </header>
+        <ExpensesForm />
       </div>
     );
   }
