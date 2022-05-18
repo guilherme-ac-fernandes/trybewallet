@@ -2,6 +2,7 @@ import {
   REQUEST_CURRENCY,
   REQUEST_CURRENCY_SUCESS,
   REQUEST_CURRENCY_FAILED,
+  SAVE_EXPENSE,
 } from '../actions/index';
 
 const INICIAL_STATE = {
@@ -22,7 +23,16 @@ const wallet = (state = INICIAL_STATE, action) => {
       currencies: Object.keys(action.data).filter((currency) => currency !== 'USDT'),
     };
   case REQUEST_CURRENCY_FAILED:
-    return { ...state, loadingAPI: false, errorAPI: action.error };
+    return {
+      ...state,
+      loadingAPI: false,
+      errorAPI: action.error,
+    };
+  case SAVE_EXPENSE:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.payload],
+    };
   default: return state;
   }
 };
