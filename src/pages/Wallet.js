@@ -15,9 +15,9 @@ class Wallet extends React.Component {
     const { userEmail, expenses } = this.props;
     const total = expenses.reduce((acc, curr) => {
       const { currency } = curr;
-      const price = Number(curr.exchangeRates[currency].ask);
-      const valueCurr = Number(curr.value) * price;
-      acc += valueCurr;
+      const exchange = Number(curr.exchangeRates[currency].ask);
+      const price = Number(curr.value) * exchange;
+      acc += price;
       return acc;
     }, 0);
     return (
