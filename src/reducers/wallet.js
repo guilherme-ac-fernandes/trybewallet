@@ -4,6 +4,7 @@ import {
   REQUEST_CURRENCY_FAILED,
   SAVE_EXPENSE,
   SAVE_ERROR,
+  DELETE_EXPENSE,
 } from '../actions/index';
 
 const INICIAL_STATE = {
@@ -37,6 +38,11 @@ const wallet = (state = INICIAL_STATE, action) => {
     };
   case SAVE_ERROR:
     return { ...state, errorAPICurrent: action.error };
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter(({ id }) => id !== action.id),
+    };
   default: return state;
   }
 };
