@@ -46,7 +46,7 @@ class ExpensesForm extends React.Component {
           Valor:
           <input
             data-testid="value-input"
-            type="text"
+            type="number"
             name="value"
             value={ value }
             onChange={ this.handleChange }

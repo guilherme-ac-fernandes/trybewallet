@@ -5,7 +5,6 @@ import { deleteExpenseAction } from '../actions';
 
 class Table extends React.Component {
   handleDelete = (id) => {
-    console.log('excluir', id);
     const { removeExpense } = this.props;
     removeExpense(id);
   }

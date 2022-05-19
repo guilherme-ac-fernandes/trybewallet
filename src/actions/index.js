@@ -9,14 +9,11 @@ export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 // Actions
 export const saveUserAction = (payload) => ({ type: SAVE_USER, payload });
-
 const requestCurrency = () => ({ type: REQUEST_CURRENCY });
 const requestCurrencySucess = (data) => ({ type: REQUEST_CURRENCY_SUCESS, data });
 const requestCurrencyFailed = (error) => ({ type: REQUEST_CURRENCY_FAILED, error });
-
-export const saveExpenseAction = (payload) => ({ type: SAVE_EXPENSE, payload });
-export const saveErrorAction = (error) => ({ type: SAVE_ERROR, error });
-
+const saveExpenseAction = (payload) => ({ type: SAVE_EXPENSE, payload });
+const saveExpenseErrorAction = (error) => ({ type: SAVE_ERROR, error });
 export const deleteExpenseAction = (id) => ({ type: DELETE_EXPENSE, id });
 
 // Actions Request API
@@ -30,7 +27,7 @@ export const fetchUpdatedCurrency = (payload) => {
       delete exchangeRates.USDT;
       dispatch(saveExpenseAction({ ...payload, exchangeRates }));
     } catch (error) {
-      dispatch(saveErrorAction(error));
+      dispatch(saveExpenseErrorAction(error));
     }
   };
 };
