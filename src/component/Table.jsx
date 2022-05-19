@@ -9,12 +9,8 @@ class Table extends React.Component {
     removeExpense(id);
   }
 
-  handleEdit = (id) => {
-    console.log('edit', id);
-  }
-
   render() {
-    const { expenses } = this.props;
+    const { expenses, handleEdit } = this.props;
     return (
       <table>
         {/* Utilização da tag tbody proveniente de uma issue do GitHub
@@ -58,7 +54,7 @@ class Table extends React.Component {
                   <button
                     data-testid="edit-btn"
                     type="button"
-                    onClick={ () => this.handleEdit(id) }
+                    onClick={ () => handleEdit(id) }
                   >
                     Editar
                   </button>
@@ -82,6 +78,7 @@ class Table extends React.Component {
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   removeExpense: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

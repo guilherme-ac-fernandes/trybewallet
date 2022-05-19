@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUpdatedCurrency } from '../actions';
+import { fetchUpdatedCurrency, updateExpenseAction } from '../actions';
 
 const INICIAL_STATE = {
   value: '',
@@ -17,6 +17,25 @@ class ExpensesForm extends React.Component {
     this.state = INICIAL_STATE;
   }
 
+  // Utilização do componentDidUpdate para adicionar valores do input para edição proveniente da mentoria com Summer de Instrução Luá Octaviano
+  componentDidUpdate() {
+    this.updateFormComponent();
+  }
+
+  updateFormComponent = () => {
+    const { editData, editState, updateWalletState } = this.props;
+    if (editState) {
+      const { value, description, currency, method, tag } = editData;
+      this.setState({
+        value,
+        description,
+        currency,
+        method,
+        tag,
+      }, () => updateWalletState());
+    }
+  }
+
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({
@@ -25,20 +44,35 @@ class ExpensesForm extends React.Component {
   }
 
   handleClick = async () => {
-    const { saveExpense, expenses } = this.props;
-    // Utilização da lógica de id único proveniente da mentoria com Especialista Gabriel Espindola
-    let id = 0;
-    if (expenses.length > 0) {
-      const lastElement = expenses[expenses.length - 1];
-      id = lastElement.id + 1;
+    const {
+      saveExpense,
+      updateExpense,
+      expenses,
+      editData,
+      cleanWalletState,
+    } = this.props;
+
+    if (!('id' in editData)) {
+      // Utilização da lógica de id único proveniente da mentoria com Especialista Gabriel Espindola
+      let id = 0;
+      if (expenses.length > 0) {
+        const lastElement = expenses[expenses.length - 1];
+        id = lastElement.id + 1;
+      }
+      saveExpense({ ...this.state, id });
+    } else {
+      const { id } = editData;
+      const expenseToEdit = expenses.filter((expense) => expense.id === id)[0];
+      const data = { ...expenseToEdit, ...this.state };
+      updateExpense(id, data);
+      cleanWalletState();
     }
-    saveExpense({ ...this.state, id });
-    this.setState({ ...INICIAL_STATE });
+    this.setState(INICIAL_STATE);
   }
 
   render() {
     const { value, description, currency, method, tag } = this.state;
-    const { currenciesOptions } = this.props;
+    const { currenciesOptions, editData } = this.props;
     return (
       <form>
 
@@ -69,6 +103,7 @@ class ExpensesForm extends React.Component {
         <label htmlFor="currency">
           Moeda:
           <select
+            data-testid="currency-input"
             name="currency"
             value={ currency }
             onChange={ this.handleChange }
@@ -115,7 +150,7 @@ class ExpensesForm extends React.Component {
           type="button"
           onClick={ this.handleClick }
         >
-          Adicionar despesa
+          {('id' in editData) ? 'Editar despesa' : 'Adicionar despesa'}
         </button>
       </form>
     );
@@ -125,7 +160,20 @@ class ExpensesForm extends React.Component {
 ExpensesForm.propTypes = {
   currenciesOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   saveExpense: PropTypes.func.isRequired,
+  updateWalletState: PropTypes.func.isRequired,
+  updateExpense: PropTypes.func.isRequired,
+  cleanWalletState: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  editData: PropTypes.shape({
+    currency: PropTypes.string,
+    description: PropTypes.string,
+    exchangeRates: PropTypes.objectOf(PropTypes.object.isRequired),
+    id: PropTypes.number,
+    method: PropTypes.string,
+    tag: PropTypes.string,
+    value: PropTypes.string,
+  }).isRequired,
+  editState: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -135,6 +183,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveExpense: (payload) => dispatch(fetchUpdatedCurrency(payload)),
+  updateExpense: (id, data) => dispatch(updateExpenseAction(id, data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesForm);

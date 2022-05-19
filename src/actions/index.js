@@ -6,6 +6,7 @@ export const REQUEST_CURRENCY_FAILED = 'REQUEST_CURRENCY_FAILED';
 export const SAVE_EXPENSE = 'SAVE_EXPENSE';
 export const SAVE_ERROR = 'SAVE_ERROR';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const UPDATE_EXPENSE = 'UPDATE_EXPENSE';
 
 // Actions
 export const saveUserAction = (payload) => ({ type: SAVE_USER, payload });
@@ -15,6 +16,7 @@ const requestCurrencyFailed = (error) => ({ type: REQUEST_CURRENCY_FAILED, error
 const saveExpenseAction = (payload) => ({ type: SAVE_EXPENSE, payload });
 const saveExpenseErrorAction = (error) => ({ type: SAVE_ERROR, error });
 export const deleteExpenseAction = (id) => ({ type: DELETE_EXPENSE, id });
+export const updateExpenseAction = (id, data) => ({ type: UPDATE_EXPENSE, id, data });
 
 // Actions Request API
 export const fetchUpdatedCurrency = (payload) => {
