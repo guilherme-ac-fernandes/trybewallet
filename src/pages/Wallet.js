@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchCurrency from '../actions';
 import ExpensesForm from '../component/ExpensesForm';
+import Table from '../component/Table';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class Wallet extends React.Component {
           <span data-testid="header-currency-field">BRL</span>
         </header>
         <ExpensesForm />
+        <Table />
       </div>
     );
   }
