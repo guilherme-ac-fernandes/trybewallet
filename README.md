@@ -1,16 +1,13 @@
-# 🚧 README em construção 🚧
+## Projeto TrybeWallet
 
-<!-- Olá, Tryber!
+#### Consiste em uma aplicação web construída para busca dos planetas presentes na franquia Star Wars em relação aos parâmetros retornados pela API, possibilidando filtrar por: população, período de rotação, diâmetro, período orbital e percentual de água presente na superfície. Bem como o ordenação crescente e decrescente dos mesmos.
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
 
-É essencial que você preencha esse documento por conta própria, ok?
+> Esta aplicação foi desenvolvida através da bibliotecas React, utilizando Context API e Hooks.
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+:point_right: **Acessar:** _[Clique Aqui](colocar)_
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+#### Demostração
+<p align="center">
+  <img src="" alt="TrybeWallet Gif - Demostração"/>
+</p>
