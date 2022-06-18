@@ -1,0 +1,28 @@
+/* .wallet-container {
+  background-color: aqua;
+} */
+
+.wallet-header {
+  background-color: #369ac8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding-inline: 40px;
+}
+
+.wallet-header-div {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+  justify-content: space-around;
+  max-width: 50%;
+}
+
+#wallet-total {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}

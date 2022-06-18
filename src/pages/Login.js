@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveUserAction } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -43,40 +44,45 @@ class Login extends React.Component {
   render() {
     const { email, password, isDisabled } = this.state;
     return (
-      <div>
-        Login
-        <form>
-          <label htmlFor="email">
-            Email:
-            <input
-              data-testid="email-input"
-              type="email"
-              name="email"
-              value={ email }
-              onChange={ this.handleChange }
-              id="email"
-            />
-          </label>
-          <label htmlFor="password">
-            Senha:
-            <input
-              data-testid="password-input"
-              type="password"
-              name="password"
-              value={ password }
-              onChange={ this.handleChange }
-              id="password"
-            />
-          </label>
-          <button
-            type="button"
-            disabled={ isDisabled }
-            onClick={ this.handleClick }
-          >
-            Entrar
-          </button>
-        </form>
-      </div>
+      <section className="login-section">
+        <div className="login-container">
+          <h3>TrybeWallet</h3>
+          <form className="form-group login-form">
+            <label htmlFor="email">
+              Email
+              <input
+                className="form-control"
+                data-testid="email-input"
+                type="email"
+                name="email"
+                value={ email }
+                onChange={ this.handleChange }
+                id="email"
+              />
+            </label>
+            <label htmlFor="password">
+              Senha
+              <input
+                className="form-control"
+                data-testid="password-input"
+                type="password"
+                name="password"
+                value={ password }
+                onChange={ this.handleChange }
+                id="password"
+              />
+            </label>
+            <button
+              className="btn btn-success"
+              type="button"
+              disabled={ isDisabled }
+              onClick={ this.handleClick }
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
+      </section>
     );
   }
 }

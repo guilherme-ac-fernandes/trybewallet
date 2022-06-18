@@ -1,0 +1,24 @@
+.expense-form-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-block: 20px;
+}
+
+.expense-form-container form {
+  align-items: flex-end;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.expense-form-container aside {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 62px;
+}
+
+.expense-form-container form label {
+  text-align: center;
+}

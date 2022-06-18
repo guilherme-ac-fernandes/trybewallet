@@ -1,0 +1,8 @@
+.table-container {
+  text-align: center;
+}
+
+.table-button-container {
+  display: flex;
+  gap: 8px;
+}

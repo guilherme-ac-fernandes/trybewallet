@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import fetchCurrency from '../actions';
 import ExpensesForm from '../component/ExpensesForm';
 import Table from '../component/Table';
+import './Wallet.css';
 
 const INICIAL_STATE = {
   editData: {},
@@ -53,12 +54,22 @@ class Wallet extends React.Component {
     const { editData, editState } = this.state;
     const total = this.sumTotal(expenses);
     return (
-      <div>
-        TrybeWallet
-        <header>
-          <h4 data-testid="email-field">{ userEmail }</h4>
-          <p data-testid="total-field">{ total.toFixed(2) }</p>
-          <span data-testid="header-currency-field">BRL</span>
+      <div className="wallet-container">
+        <header className="wallet-header">
+          <h3>Hello, TrybeWallet!</h3>
+          <div className="wallet-header-div">
+            <h5 data-testid="email-field">{ userEmail }</h5>
+            <div className="btn btn-success" id="wallet-total">
+              <span>R$</span>
+              <span data-testid="total-field">{ total.toFixed(2) }</span>
+              <span
+                className="badge badge-light"
+                data-testid="header-currency-field"
+              >
+                BRL
+              </span>
+            </div>
+          </div>
         </header>
         <ExpensesForm
           editData={ editData }
