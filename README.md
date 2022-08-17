@@ -13,7 +13,7 @@ npm install // para instalar as dependências
 npm start // para iniciar a aplicação
 ```
 
-### Demostração
+### Demonstração
 
 👨🏻‍💻 **Acessar:** _[Clique Aqui](https://trybewallet-seven.vercel.app)_
 
