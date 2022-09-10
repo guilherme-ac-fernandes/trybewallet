@@ -2,7 +2,7 @@
 
 Consiste em uma carteira de controle de gastos com conversor de moeda, onde o usuário e capaz de: adicionar, remover e editar um gasto; visualizar a tabela contendo todos os gastos e o total de gastos convertidos em real.
 
-* Construída utilizado React, Redux e BrowserRouter.
+* Construída utilizado React, Redux, BrowserRouter e CSS3.
 
 ### Instruções
 
