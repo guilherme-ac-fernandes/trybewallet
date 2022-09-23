@@ -1,6 +1,6 @@
 # Projeto TrybeWallet 💰
 
-Consiste em uma carteira de controle de gastos com conversor de moeda, onde o usuário é capaz de: adicionar, remover e editar um gasto; visualizar a tabela contendo todos os gastos e o total de gastos convertidos em real.
+Consiste em uma carteira de controle de gastos com conversor de moeda, onde o usuário é capaz de: adicionar, remover e editar um gasto; visualizar a tabela contendo todos os gastos e o total de gastos convertidos em reais.
 
 * Construída utilizado React, Redux, BrowserRouter e CSS3.
 
